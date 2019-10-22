@@ -103,6 +103,12 @@ Kubectl get svc -n monitoring
 Kubectl get svc -n ingress-nginx
 ```
 
+
+## Stoping the cluster.
+```
+vagrant halt
+```
+
 ## Clean-up
 
 Execute the following command to remove the virtual machines created for the Kubernetes cluster.
@@ -112,6 +118,4 @@ vagrant destroy -f
 
 You can destroy individual machines by vagrant destroy k8s-node-1 -f
 
-## Licensing
 
-[Apache License, Version 2.0](http://opensource.org/licenses/Apache-2.0).
