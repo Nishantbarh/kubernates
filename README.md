@@ -7,7 +7,8 @@
  * ** Download & Install [Vagrant 2.1.4+](https://www.vagrantup.com)**
  * ** Download & Install Install [Virtualbox 5.2.18+](https://www.virtualbox.org)**
  
-  ## Step 1:Setup the Vagrant Path in Enviorment variable and restart the machine.
+  ## Step 1: Install Vagrant  and Setup Path in Enviorment variable and restart the machine.
+  
   
   ## Step 2:clone or download this repo from github.
   * git clone https://github.com/Nishantbarh/kubernates.git.
