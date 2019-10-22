@@ -66,7 +66,7 @@ verify the installtion .
 
 Kubectl get pods -n ingress-nginx
 
-## setup Monitoring using promotheus and grafna.
+## setup Monitoring using promotheus and Grafana.
 ```
 cd /vagrant/monitoring/
 go in every folder and run all the yaml.
