@@ -1,15 +1,16 @@
-# Kubernetes cluster
-A vagrant script for setting up a Kubernetes cluster using Kubeadm
+# Setup Kubernetes cluster using vagrant.
 
-## Pre-requisites
 
- * **[Vagrant 2.1.4+](https://www.vagrantup.com)**
- * **[Virtualbox 5.2.18+](https://www.virtualbox.org)**
 
-## How to Run
+## Pre-requisites for Windows64 bit setup.
 
-Execute the following vagrant command to start a new Kubernetes cluster, this will start one master and two nodes:
-
+ * ** Download & Install [Vagrant 2.1.4+](https://www.vagrantup.com)**
+ * ** Download & Install Install [Virtualbox 5.2.18+](https://www.virtualbox.org)**
+ 
+  # Step 1:setup the Vagrant Path in Enviorment variable.
+  # Step 2:clone or download this repo (git clone https://github.com/Nishantbarh/kubernates.git.)
+  # Step 3:Execute the following vagrant command to start a new Kubernetes cluster, this will start one master and two nodes:
+ 
 ```
 vagrant up
 ```
@@ -33,6 +34,29 @@ servers = [
  ```
 
 As you can see above, you can also configure IP address, memory and CPU in the servers array. 
+# Step 4:once cluster is up  then login into master machine as:
+```
+vagrant ssh k8s-master
+```
+# Step 5:Run some utility in server to configure :
+```
+cd /vagrant/utility/
+
+kubectl apply -f calico.yaml
+kubectl apply -f rbac-kdd.yaml
+kubectl apply -f kubernetes-dashboard.yaml
+kubectl apply -f admin-user.yaml
+kubectl apply -f heapster.yaml
+kubectl apply -f influxdb.yaml
+```
+# Step 5:verify the cluster status as 
+```
+kubectl get nodes
+```
+
+
+
+
 
 ## Clean-up
 
