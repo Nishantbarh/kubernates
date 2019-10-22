@@ -58,7 +58,7 @@ kubectl get nodes
 ```
 ## setup Ngnix loadbalncer.
 ```
-cd cd /vagrant/ingress/
+cd  /vagrant/ingress/
 kubectl apply -f ingress-nginx.yaml
 ```
 
@@ -66,8 +66,15 @@ verify the installtion .
 
 Kubectl get pods -n ingress-nginx
 
+## setup Monitoring using promotheus and grafna.
+```
+cd /vagrant/monitoring/
+go in every folder and run all the yaml.
 
+```
+some installation link is provided as:
 
+https://medium.com/faun/production-grade-kubernetes-monitoring-using-prometheus-78144b835b60
 
 ## Clean-up
 
