@@ -79,16 +79,17 @@ go in every folder and run all the yaml.
 some installation link is provided as:
 
 https://medium.com/faun/production-grade-kubernetes-monitoring-using-prometheus-78144b835b60
-## setup Application using Nodeport.
+## Setup Application using Nodeport.
 
 step 1:create one docker hub  command
 https://hub.docker.com/  with your own username and password and email.
-step 2:after login create your own repository.
 
-clone some sample project from 
+step 2 :after login create your own repository.
+
+clone  sample apps from 
 git clone https://github.com/Nishantbarh/apps
 
-step 3:in the cloned directory 
+step 3:cd into  cloned directory 
 
 modify the docker-compose yaml file as per your own docker repo path(username/reponame)
 
@@ -96,10 +97,9 @@ then run command as
 
 docker-compose up
 
-this command will build all the images .
+this command will build all the images locally.
 then login into docker hub from your master machine as
-docker login 
-
+docker login (provide your own  docker hub username and passowrd)
 
 then run the command as 
 
@@ -107,18 +107,14 @@ docker-compose push
 
 it will push the images into your docker hub repo.
 
-To link your docker hub credentails  in kubernate please execute the command to create the secret.
+To link your docker hub credentails  in kubernate  cluster please execute the command to create the secret.
 ```
 kubectl create secret docker-registry mycred --docker-server=https://index.docker.io/v1/  --docker-username=XXXX --docker-password=XXX --docker-email=xxxx@gmail.com
 ```
 now refer the mycred secret created for pulling the images form docker hub.
 
 for demostration i have build three application you can build your own.
-
-for sample deployment please refer the Document-service/k8-deployment scripts.
-now you can deploy all the application from k8-deployment scripts folder from each of the application
-
-
+Now you can deploy all the application from k8-deployment scripts folder from each of the application
 
 
 ## Create ingress or Load Balancer Rule.
