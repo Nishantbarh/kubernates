@@ -7,19 +7,22 @@
  * ** Download & Install [Vagrant 2.1.4+](https://www.vagrantup.com)**
  * ** Download & Install Install [Virtualbox 5.2.18+](https://www.virtualbox.org)**
  
-  ## Step 1: Install Vagrant  and Setup Path in Enviorment variable and restart the machine.
+  ## Step 1: Install Vagrant  and Setup vagrant Path in Enviorment variable and restart the machine.
   
   
   ## Step 2:clone or download this repo from github.
   * git clone https://github.com/Nishantbarh/kubernates.git.
   
+  
+  
   ## Step 3:Execute the following vagrant command to start a new Kubernetes cluster, this will start one master and two nodes:
  
 ```
+cd into cloned directory and run the below command
 vagrant up
 ```
 
-You can also start invidual machines by vagrant up k8s-head, vagrant up k8s-node-1 and vagrant up k8s-node-2
+You can also start invidual machines by vagrant up k8s-master, vagrant up k8s-node1 and vagrant up k8s-node2
 
 If more than two nodes are required, you can edit the servers array in the Vagrantfile
 
@@ -42,7 +45,7 @@ As you can see above, you can also configure IP address, memory and CPU in the s
 ```
 vagrant ssh k8s-master
 ```
-## Step 5:Run some utility in cluster to configure tools :
+## Step 5:Run some utility like kubernate dashbaord  in cluster:
 ```
 cd /vagrant/utility/
 
@@ -78,15 +81,45 @@ some installation link is provided as:
 https://medium.com/faun/production-grade-kubernetes-monitoring-using-prometheus-78144b835b60
 ## setup Application using Nodeport.
 
-for demostration i have build three application you can build your own.
+step 1:create one docker hub  command
+https://hub.docker.com/  with your own username and password and email.
+step 2:after login create your own repository.
 
-for sample deployment please refer the Document-service/k8-deployment scripts.
+clone some sample project from 
+git clone https://github.com/Nishantbarh/apps
 
-to link your docker hub credentails please execute the command to create the secret.
+step 3:in the cloned directory 
+
+modify the docker-compose yaml file as per your own docker repo path(username/reponame)
+
+then run command as
+
+docker-compose up
+
+this command will build all the images .
+then login into docker hub from your master machine as
+docker login 
+
+
+then run the command as 
+
+docker-compose push
+
+it will push the images into your docker hub repo.
+
+To link your docker hub credentails  in kubernate please execute the command to create the secret.
 ```
 kubectl create secret docker-registry mycred --docker-server=https://index.docker.io/v1/  --docker-username=XXXX --docker-password=XXX --docker-email=xxxx@gmail.com
 ```
 now refer the mycred secret created for pulling the images form docker hub.
+
+for demostration i have build three application you can build your own.
+
+for sample deployment please refer the Document-service/k8-deployment scripts.
+now you can deploy all the application from k8-deployment scripts folder from each of the application
+
+
+
 
 ## Create ingress or Load Balancer Rule.
 The sample Ingress rule has been created and it's avaible into Document-service/k8-deployment scripts
